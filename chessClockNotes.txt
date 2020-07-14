@@ -1,0 +1,59 @@
+2020 July 13
+
+
+
+
+Files in prototype
+
+chessClockUi.html
+
+gameState.js
+
+card.js
+
+player.js
+
+clock.js
+
+event.js
+
+timeline.js
+
+cardGenerator.js
+
+deck.js (?)
+
+
+Interface JS files:
+
+popUpMenu.js
+
+etc
+
+
+
+
+
+
+
+ZONES = [
+    'hand',
+    'deck',
+    'discard',
+    'table'
+]
+
+card.controller = gameState.players[1]
+card.zone = 'hand'
+card.coord = undefined
+
+
+
+
+
+
+
+
+
+
+
