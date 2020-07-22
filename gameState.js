@@ -11,6 +11,14 @@ class GameState {
             new Player()
         ];
 
+        this.cards = [];
+
+        this.board = [][];
+    }
+
+    // Describe the current game state in text.
+    print () {
+
     }
 
     
