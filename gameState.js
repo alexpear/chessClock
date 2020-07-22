@@ -1,7 +1,7 @@
 // Central class representing game at a instant in time
 
 class Clock = require('./clock.js');
-class Player = require('.player.js');
+class Player = require('./player.js');
 
 class GameState {
     constructor () {
