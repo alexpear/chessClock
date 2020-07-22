@@ -1,0 +1,30 @@
+{
+  "name": "chessclock",
+  "version": "0.1.0",
+  "description": "Time-based digital card game",
+  "main": "gameState.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexpear/chessclock.git"
+  },
+  "keywords": [
+    "game",
+    "card",
+    "game",
+    "chess",
+    "clock",
+    "time"
+  ],
+  "author": "Nadine & Alex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexpear/chessclock/issues"
+  },
+  "homepage": "https://github.com/alexpear/chessclock#readme",
+  "dependencies": {
+    "lodash": "^4.17.19"
+  }
+}
