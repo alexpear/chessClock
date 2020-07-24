@@ -2,6 +2,7 @@
 
 const Client = require('./client.js');
 const Clock = require('./clock.js');
+const Location = require('./location.js');
 const Player = require('./player.js');
 
 const _ = require('lodash');
@@ -23,6 +24,9 @@ class Card {
         this.image = undefined;
         this.size = 1; // In board squares.
 
+        // Later be more specific.
+        this.location = new Location();
+
         // TODO randomness
         this.fillInBlanks();
     }
@@ -32,7 +36,7 @@ class Card {
         this.fillSecondaryPurpose();
         this.fillType();
         this.fillLevel();
-        // this.fillDebut();
+        this.fillDebut();
         // this.fillDuration();
         // this.fillFinale();
         // this.fillContractLength();
@@ -54,6 +58,10 @@ class Card {
 
     fillLevel () {
         this.level = this.level || _.sample([1, 2, 3]);
+    }
+
+    fillDebut () {
+
     }
 
     // returns a string like 'Bookstore'
