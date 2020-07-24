@@ -37,9 +37,9 @@ class Card {
         this.fillType();
         this.fillLevel();
         this.fillDebut();
-        // this.fillDuration();
-        // this.fillFinale();
-        // this.fillContractLength();
+        this.fillDuration();
+        this.fillFinale();
+        this.fillContractLength();
 
         // LATER randomly generated name
     }
@@ -61,7 +61,20 @@ class Card {
     }
 
     fillDebut () {
+        this.debut = this.debut || _.sample(Card.debuts());
+    }
 
+    fillDuration () {
+        this.duration = this.duration || _.sample(Card.durations());
+    }
+
+    fillFinale () {
+        this.finale = this.finale || _.sample(Card.finales());
+    }
+
+    fillContractLength () {
+        this.contractLength = this.contractLength ||
+            Math.ceil(Math.random() * 999);
     }
 
     // returns a string like 'Bookstore'
@@ -135,9 +148,18 @@ class Card {
 
         // TODO also save what species this is (if applicable).
 
-        const output = `${border}\n ($${this.cost()}) ${client} ${this.purpose} ${this.cardType} card\n Level ${this.level}\n Debut: ${this.debut}\n Duration: ${this.duration}\n Finale: ${this.finale}\n${border}`;
+        const lines = [
+            border,
+            ` ($${this.cost()}) ${client} ${this.purpose}/${this.secondaryPurpose} ${this.cardType} card`,
+            ` Level ${this.level}`,
+            ` Debut: ${this.debut}`,
+            ` Duration: ${this.duration}`,
+            ` Contract Length: ${this.contractLength}s`,
+            ` Finale: ${this.finale}`,
+            border
+        ];
 
-        return output;
+        return lines.join('\n');
     }
 
     print () {
@@ -160,13 +182,36 @@ class Card {
         };
     }
 
-    cost () {
-        return 0;
+    static debuts () {
+        return [
+            'we gain $10',
+            'they lose $10',
+            'we must remove 1 of our cards',
+            'we may move 1 of our cards on the board'
+        ];
     }
 
-    // fillLevel() {}
+    static durations () {
+        return [
+            'we gain $1',
+            'they lose $1',
+            'their cards cost $1 more',
+            'our cards cost $1 less'
+        ];
+    }
 
+    static finales () {
+        return [
+            'we gain $10',
+            'they lose $10',
+            'we must remove 1 of our cards',
+            'we may move 1 of our cards on the board'
+        ];
+    }
 
+    cost () {
+        return Math.ceil( Math.random() * 100 );
+    }
 
     static test () {
         const example = new Card('lair');
