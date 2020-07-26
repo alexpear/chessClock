@@ -82,55 +82,63 @@ class Card {
         const chart = {
             cultural: {
                 cultural: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Aesthetics
+                    occupation: [‘designer’, ‘artist’, ‘visionary’],
+                    structure: [‘installation’, ‘gallery’, ‘museum’],
+                    initiative: [‘collective’, ‘art scene’, ‘art movement’]
                 },
                 economic: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Performance
+                    occupation: [‘performer’, ‘actor’, ‘virtuoso’],
+                    structure: [‘venue’, ‘theater’, ‘arena’],
+                    initiative: [‘concert’, ‘tour’, ‘festival’]
                 },
                 legacy: {
                     // LATER System should be able to see this is the Language section
                     // Language
                     occupation: ['blogger', 'author', 'wordsmith'],
-                    structure: [],
-                    initiative: []
+                    structure: [‘bookstore’, ‘library’, ‘university’],
+                    initiative: [‘guest lecture’, ‘bestseller’, ‘great american novel’]
                 }
             },
             economic: {
                 cultural: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Mass Media
+                    occupation: [‘assistant’, ‘producer’, ‘mogul’],
+                    structure: [‘agency’, ‘studio’, ‘media network’],
+                    initiative: [‘local news’, ‘sitcom’, ‘award show’]
                 },
                 economic: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Service
+                    occupation: [‘waiter’, ‘manager’, ‘CEO’],
+                    structure: [‘food truck’, ‘restaurant’, ‘franchise’],
+                    initiative: [‘local ad’, ‘endorsement’, ‘sponsorship’]
                 },
                 legacy: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Tech
+                    occupation: [‘intern’, ‘innovator’, ‘pioneer’],
+                    structure: [‘startup’, ‘office’, ‘corporation’],
+                    initiative: [‘app’, ‘gadget’, ‘breakthrough’]
                 }
             },
             legacy: {
                 cultural: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Progress
+                    occupation: [‘canvasser’, ‘activist’, ‘hero’],
+                    structure: [‘soup kitchen’, ‘free clinic’, ‘foundation’],
+                    initiative: [‘petition’, ‘boycott’, ‘manifesto’]
                 },
                 economic: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Fame
+                    occupation: [‘influencer’, ‘celebrity’, ‘icon’],
+                    structure: [‘novelty attraction’, ‘landmark’, ‘destination’],
+                    initiative: [‘tabloid headline’, ‘talk show appearance’, ‘black tie gala’]
                 },
                 legacy: {
-                    occupation: [],
-                    structure: [],
-                    initiative: []
+                    // Government
+                    occupation: [‘coordinator’, ‘politician’, ‘leader’],
+                    structure: [‘public garden’, ‘athletic field’, ‘national park’],
+                    initiative: [‘PSA’, ‘political campaign’, ‘holiday’]
                 }
             }
         };
