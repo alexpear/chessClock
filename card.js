@@ -1,5 +1,6 @@
 // Central class representing game at a instant in time
 
+const CardName = require('./cardName.js');
 const Client = require('./client.js');
 const Clock = require('./clock.js');
 const Location = require('./location.js');
@@ -28,7 +29,7 @@ class Card {
 
         this.contractLength = 0;
 
-        this.characterName = '<Givenname Familyname>';
+        this.characterName = CardName.random();
 
         this.image = undefined;
         this.size = 1; // In board squares.
@@ -181,14 +182,13 @@ class Card {
         const modifier = Util.capitalized(this.modifier);
         const descriptor = Util.capitalized(this.getDescriptor());
 
-        // LATER combine type, purpose, and stage into one word from the relevant chart. Stage 2 cultural structure = Bookstore.
-        // const descriptor = this.getDescriptor();
-
-        // TODO also save what species this is (if applicable).
+        const header = this.cardType === 'occupation' ?
+            ` ($${this.cost()}) ${this.characterName}, ${modifier} ${descriptor} (${client} Inc)` :
+            ` ($${this.cost()}) <NAME>, ${modifier} ${descriptor} (${client} Inc)`;
 
         const lines = [
             border,
-            ` ($${this.cost()}) ${this.characterName}, ${modifier} ${descriptor} (${client} Inc)`,
+            header,
             ` (${this.purpose}/${this.secondaryPurpose} ${this.cardType})`,
             ` Stage ${this.stage}`,
             ` Debut: ${this.debut}`,
