@@ -80,13 +80,21 @@ class Client {
         return info[this.primaryGenre][this.secondaryGenre].name;
     }
 
-    modifiers () {
+    // Modifiers are like species.
+    getModifiers () {
         const forFaction = {
+            void: ['null', 'abomination', 'ancient'],
+            sin: ['imp', 'hellhound', 'demon'],
+            tomb: ['skeleton', 'ghost', 'vampire'],
+            lore: ['chupacabra', 'mothman', 'sasquatch'],
             myth: ['pooka', 'gorgon', 'sphynx'],
-
+            forge: ['elemental', 'gargoyle', 'dragon'],
+            end: ['dodo', 'mammoth', 'triceratops'],
+            code: ['robot', 'drone', 'ai'],
+            space: ['martian', 'carnivore', 'grey']
         };
 
-        return forFaction[this.name().toLowerCase()];
+        return forFaction[this.name()];
     }
 };
 

@@ -71,10 +71,21 @@ class Card {
     }
 
     fillModifier () {
-        const options = this.client.modifiers();
+        this.modifier = this.modifier || this.randomModifier();
+    }
 
-        
+    randomModifier () {
+        const options = this.client.getModifiers();
+        const dieRoll = Math.random();
 
+        if (dieRoll < 0.45) {
+            return options[0];
+        }
+        if (dieRoll < 0.78) {
+            return options[1];
+        }
+
+        return options[2];
     }
 
     fillDebut () {
@@ -167,6 +178,7 @@ class Card {
         const border = '-------------------------------';
 
         const client = Util.capitalized(this.client.name());
+        const modifier = Util.capitalized(this.modifier);
         const descriptor = Util.capitalized(this.getDescriptor());
 
         // LATER combine type, purpose, and stage into one word from the relevant chart. Stage 2 cultural structure = Bookstore.
@@ -176,7 +188,7 @@ class Card {
 
         const lines = [
             border,
-            ` ($${this.cost()}) ${this.characterName}, ${descriptor} of the ${client}`,
+            ` ($${this.cost()}) ${this.characterName}, ${modifier} ${descriptor} (${client} Inc)`,
             ` (${this.purpose}/${this.secondaryPurpose} ${this.cardType})`,
             ` Stage ${this.stage}`,
             ` Debut: ${this.debut}`,
