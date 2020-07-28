@@ -35,43 +35,43 @@ class Client {
         const info = {
             fantasy: {
                 fantasy: {
-                    name: 'Myth'
+                    name: 'myth'
                     // Wild forest creatures
                 },
                 horror: {
-                    name: 'Lore'
+                    name: 'lore'
                     // Sphynxes, Griffins
                 },
                 scifi: {
-                    name: 'Forge'
+                    name: 'forge'
                     // Dragons
                 }
             },
             horror: {
                 fantasy: {
-                    name: 'Tomb'
+                    name: 'tomb'
                     // Undead
                 },
                 horror: {
-                    name: 'Sin'
+                    name: 'sin'
                     // Hell
                 },
                 scifi: {
-                    name: 'Void'
+                    name: 'void'
                     // Eldritch horrors
                 }
             },
             scifi: {
                 fantasy: {
-                    name: 'End'
+                    name: 'end'
                     // Time travelers from future
                 },
                 horror: {
-                    name: 'Space'
+                    name: 'space'
                     // Classic aliens
                 },
                 scifi: {
-                    name: 'Code'
+                    name: 'code'
                     // Robots
                 }
             }
