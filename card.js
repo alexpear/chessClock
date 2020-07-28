@@ -11,10 +11,16 @@ const _ = require('lodash');
 class Card {
     constructor (client, purpose, cardType, stage) {
         this.client = client;
+
+        // Later clean this constructor interface up:
         this.purpose = purpose;
         this.secondaryPurpose = undefined;
+
         this.cardType = cardType;
         this.stage = stage;
+
+        // Modifier is like species
+        this.modifier = undefined;
 
         this.debut = undefined;
         this.duration = undefined;
@@ -22,7 +28,7 @@ class Card {
 
         this.contractLength = 0;
 
-        this.characterName = undefined; // string
+        this.characterName = '<Givenname Familyname>';
 
         this.image = undefined;
         this.size = 1; // In board squares.
@@ -39,6 +45,7 @@ class Card {
         this.fillSecondaryPurpose();
         this.fillType();
         this.fillStage();
+        this.fillModifier();
         this.fillDebut();
         this.fillDuration();
         this.fillFinale();
@@ -61,6 +68,13 @@ class Card {
 
     fillStage () {
         this.stage = this.stage || _.sample([1, 2, 3]);
+    }
+
+    fillModifier () {
+        const options = this.client.modifiers();
+
+        
+
     }
 
     fillDebut () {
@@ -152,7 +166,7 @@ class Card {
     toString () { 
         const border = '-------------------------------';
 
-        const client = Util.capitalized(this.client);
+        const client = Util.capitalized(this.client.name());
         const descriptor = Util.capitalized(this.getDescriptor());
 
         // LATER combine type, purpose, and stage into one word from the relevant chart. Stage 2 cultural structure = Bookstore.
@@ -162,7 +176,7 @@ class Card {
 
         const lines = [
             border,
-            ` ($${this.cost()}) <Givenname Familyname>, ${descriptor} of the ${client}`,
+            ` ($${this.cost()}) ${this.characterName}, ${descriptor} of the ${client}`,
             ` (${this.purpose}/${this.secondaryPurpose} ${this.cardType})`,
             ` Stage ${this.stage}`,
             ` Debut: ${this.debut}`,
@@ -227,9 +241,7 @@ class Card {
     }
 
     static test () {
-        const clientName = new Client().name() || 'lair';
-
-        const example = new Card(clientName);
+        const example = new Card(new Client());
         example.print();
     }
 }
