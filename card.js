@@ -4,6 +4,7 @@ const Client = require('./client.js');
 const Clock = require('./clock.js');
 const Location = require('./location.js');
 const Player = require('./player.js');
+const Util = require('./util.js');
 
 const _ = require('lodash');
 
@@ -83,73 +84,74 @@ class Card {
             cultural: {
                 cultural: {
                     // Aesthetics
-                    occupation: [‘designer’, ‘artist’, ‘visionary’],
-                    structure: [‘installation’, ‘gallery’, ‘museum’],
-                    initiative: [‘collective’, ‘art scene’, ‘art movement’]
+                    occupation: ['designer', 'artist', 'visionary'],
+                    structure: ['installation', 'gallery', 'museum'],
+                    initiative: ['collective', 'art scene', 'art movement']
                 },
                 economic: {
                     // Performance
-                    occupation: [‘performer’, ‘actor’, ‘virtuoso’],
-                    structure: [‘venue’, ‘theater’, ‘arena’],
-                    initiative: [‘concert’, ‘tour’, ‘festival’]
+                    occupation: ['performer', 'actor', 'virtuoso'],
+                    structure: ['venue', 'theater', 'arena'],
+                    initiative: ['concert', 'tour', 'festival']
                 },
                 legacy: {
                     // LATER System should be able to see this is the Language section
                     // Language
                     occupation: ['blogger', 'author', 'wordsmith'],
-                    structure: [‘bookstore’, ‘library’, ‘university’],
-                    initiative: [‘guest lecture’, ‘bestseller’, ‘great american novel’]
+                    structure: ['bookstore', 'library', 'university'],
+                    initiative: ['guest lecture', 'bestseller', 'great american novel']
                 }
             },
             economic: {
                 cultural: {
                     // Mass Media
-                    occupation: [‘assistant’, ‘producer’, ‘mogul’],
-                    structure: [‘agency’, ‘studio’, ‘media network’],
-                    initiative: [‘local news’, ‘sitcom’, ‘award show’]
+                    occupation: ['assistant', 'producer', 'mogul'],
+                    structure: ['agency', 'studio', 'media network'],
+                    initiative: ['local news', 'sitcom', 'award show']
                 },
                 economic: {
                     // Service
-                    occupation: [‘waiter’, ‘manager’, ‘CEO’],
-                    structure: [‘food truck’, ‘restaurant’, ‘franchise’],
-                    initiative: [‘local ad’, ‘endorsement’, ‘sponsorship’]
+                    occupation: ['waiter', 'manager', 'CEO'],
+                    structure: ['food truck', 'restaurant', 'franchise'],
+                    initiative: ['local ad', 'endorsement', 'sponsorship']
                 },
                 legacy: {
                     // Tech
-                    occupation: [‘intern’, ‘innovator’, ‘pioneer’],
-                    structure: [‘startup’, ‘office’, ‘corporation’],
-                    initiative: [‘app’, ‘gadget’, ‘breakthrough’]
+                    occupation: ['intern', 'innovator', 'pioneer'],
+                    structure: ['startup', 'office', 'corporation'],
+                    initiative: ['app', 'gadget', 'breakthrough']
                 }
             },
             legacy: {
                 cultural: {
                     // Progress
-                    occupation: [‘canvasser’, ‘activist’, ‘hero’],
-                    structure: [‘soup kitchen’, ‘free clinic’, ‘foundation’],
-                    initiative: [‘petition’, ‘boycott’, ‘manifesto’]
+                    occupation: ['canvasser', 'activist', 'hero'],
+                    structure: ['soup kitchen', 'free clinic', 'foundation'],
+                    initiative: ['petition', 'boycott', 'manifesto']
                 },
                 economic: {
                     // Fame
-                    occupation: [‘influencer’, ‘celebrity’, ‘icon’],
-                    structure: [‘novelty attraction’, ‘landmark’, ‘destination’],
-                    initiative: [‘tabloid headline’, ‘talk show appearance’, ‘black tie gala’]
+                    occupation: ['influencer', 'celebrity', 'icon'],
+                    structure: ['novelty attraction', 'landmark', 'destination'],
+                    initiative: ['tabloid headline', 'talk show appearance', 'black tie gala']
                 },
                 legacy: {
                     // Government
-                    occupation: [‘coordinator’, ‘politician’, ‘leader’],
-                    structure: [‘public garden’, ‘athletic field’, ‘national park’],
-                    initiative: [‘PSA’, ‘political campaign’, ‘holiday’]
+                    occupation: ['coordinator', 'politician', 'leader'],
+                    structure: ['public garden', 'athletic field', 'national park'],
+                    initiative: ['PSA', 'political campaign', 'holiday']
                 }
             }
         };
 
-        return chart[this.purpose][this.cardType][this.level - 1];
+        return chart[this.purpose][this.secondaryPurpose][this.cardType][this.level - 1];
     }
 
     toString () { 
         const border = '-------------------------------';
 
-        const client = this.client.toUpperCase();
+        const client = Util.capitalized(this.client);
+        const descriptor = Util.capitalized(this.getDescriptor());
 
         // LATER combine type, purpose, and level into one word from the relevant chart. Level 2 cultural structure = Bookstore.
         // const descriptor = this.getDescriptor();
@@ -158,8 +160,9 @@ class Card {
 
         const lines = [
             border,
-            ` ($${this.cost()}) ${client} ${this.purpose}/${this.secondaryPurpose} ${this.cardType} card`,
-            ` Level ${this.level}`,
+            ` ($${this.cost()}) ${descriptor} of the ${client}`,
+            ` (${this.purpose}/${this.secondaryPurpose} ${this.cardType})`,
+            ` Stage ${this.level}`,
             ` Debut: ${this.debut}`,
             ` Duration: ${this.duration}`,
             ` Contract Length: ${this.contractLength}s`,
@@ -222,7 +225,9 @@ class Card {
     }
 
     static test () {
-        const example = new Card('lair');
+        const clientName = new Client().name() || 'lair';
+
+        const example = new Card(clientName);
         example.print();
     }
 }
