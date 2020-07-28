@@ -35,15 +35,15 @@ class Client {
         const info = {
             fantasy: {
                 fantasy: {
-                    name: 'Wild'
+                    name: 'Myth'
                     // Wild forest creatures
                 },
                 horror: {
-                    name: 'Pride'
+                    name: 'Lore'
                     // Sphynxes, Griffins
                 },
                 scifi: {
-                    name: 'Lair'
+                    name: 'Forge'
                     // Dragons
                 }
             },
@@ -53,7 +53,7 @@ class Client {
                     // Undead
                 },
                 horror: {
-                    name: 'Damned'
+                    name: 'Sin'
                     // Hell
                 },
                 scifi: {
