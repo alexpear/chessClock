@@ -79,6 +79,15 @@ class Client {
 
         return info[this.primaryGenre][this.secondaryGenre].name;
     }
+
+    modifiers () {
+        const forFaction = {
+            myth: ['pooka', 'gorgon', 'sphynx'],
+
+        };
+
+        return forFaction[this.name().toLowerCase()];
+    }
 };
 
 module.exports = Client;
