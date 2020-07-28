@@ -22,6 +22,8 @@ class Card {
 
         this.contractLength = 0;
 
+        this.characterName = undefined; // string
+
         this.image = undefined;
         this.size = 1; // In board squares.
 
@@ -160,7 +162,7 @@ class Card {
 
         const lines = [
             border,
-            ` ($${this.cost()}) ${descriptor} of the ${client}`,
+            ` ($${this.cost()}) <Givenname Familyname>, ${descriptor} of the ${client}`,
             ` (${this.purpose}/${this.secondaryPurpose} ${this.cardType})`,
             ` Stage ${this.stage}`,
             ` Debut: ${this.debut}`,
