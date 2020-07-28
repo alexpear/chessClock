@@ -9,12 +9,12 @@ const Util = require('./util.js');
 const _ = require('lodash');
 
 class Card {
-    constructor (client, purpose, cardType, level) {
+    constructor (client, purpose, cardType, stage) {
         this.client = client;
         this.purpose = purpose;
         this.secondaryPurpose = undefined;
         this.cardType = cardType;
-        this.level = level;
+        this.stage = stage;
 
         this.debut = undefined;
         this.duration = undefined;
@@ -36,7 +36,7 @@ class Card {
         this.fillPurpose();
         this.fillSecondaryPurpose();
         this.fillType();
-        this.fillLevel();
+        this.fillStage();
         this.fillDebut();
         this.fillDuration();
         this.fillFinale();
@@ -57,8 +57,8 @@ class Card {
         this.secondaryPurpose = this.secondaryPurpose || _.sample(Object.keys(Card.purposes()));
     }
 
-    fillLevel () {
-        this.level = this.level || _.sample([1, 2, 3]);
+    fillStage () {
+        this.stage = this.stage || _.sample([1, 2, 3]);
     }
 
     fillDebut () {
@@ -144,7 +144,7 @@ class Card {
             }
         };
 
-        return chart[this.purpose][this.secondaryPurpose][this.cardType][this.level - 1];
+        return chart[this.purpose][this.secondaryPurpose][this.cardType][this.stage - 1];
     }
 
     toString () { 
@@ -153,7 +153,7 @@ class Card {
         const client = Util.capitalized(this.client);
         const descriptor = Util.capitalized(this.getDescriptor());
 
-        // LATER combine type, purpose, and level into one word from the relevant chart. Level 2 cultural structure = Bookstore.
+        // LATER combine type, purpose, and stage into one word from the relevant chart. Stage 2 cultural structure = Bookstore.
         // const descriptor = this.getDescriptor();
 
         // TODO also save what species this is (if applicable).
@@ -162,7 +162,7 @@ class Card {
             border,
             ` ($${this.cost()}) ${descriptor} of the ${client}`,
             ` (${this.purpose}/${this.secondaryPurpose} ${this.cardType})`,
-            ` Stage ${this.level}`,
+            ` Stage ${this.stage}`,
             ` Debut: ${this.debut}`,
             ` Duration: ${this.duration}`,
             ` Contract Length: ${this.contractLength}s`,
