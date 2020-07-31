@@ -37,7 +37,6 @@ class Card {
         // Later be more specific.
         this.location = new Location();
 
-        // TODO randomness
         this.fillInBlanks();
     }
 
@@ -178,6 +177,7 @@ class Card {
     toString () { 
         const border = '-------------------------------';
 
+        // TODO functionize header for html use
         const client = Util.capitalized(this.client.name());
         const modifier = Util.capitalized(this.modifier);
         const descriptor = Util.capitalized(this.getDescriptor());
@@ -252,8 +252,12 @@ class Card {
         return Math.ceil( Math.random() * 100 );
     }
 
+    static random () {
+        return new Card(new Client());
+    }
+
     static test () {
-        const example = new Card(new Client());
+        const example = Card.random();
         example.print();
     }
 }

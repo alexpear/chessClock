@@ -4,7 +4,8 @@
   "description": "Time-based digital card game",
   "main": "gameState.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run refresh",
+    "refresh": "browserify interface.js -o interfaceBundle.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/alexpear/chessclock#readme",
   "dependencies": {
+    "browserify": "^16.5.1",
     "comma-number": "^2.0.1",
     "lodash": "^4.17.19",
     "moment": "^2.27.0"
