@@ -28,7 +28,7 @@ class Interface {
         addRow(header, 'cardName');
         addRow(`(${card.purpose}/${card.secondaryPurpose} ${card.cardType})`, 'cardCategory');
         addRow(`Stage ${card.stage}`);
-        addRow(`Debug: ${card.debut}`);
+        addRow(`Debut: ${card.debut}`);
         addRow(`Duration: ${card.duration}`);
         addRow(`Contract Length: ${card.contractLength}`);
         addRow(`Finale: ${card.finale}`);
