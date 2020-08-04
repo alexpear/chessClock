@@ -25,10 +25,28 @@ class Interface {
             ` ($${card.cost()}) ${card.characterName}, ${modifier} ${descriptor} (${client} Inc)` :
             ` ($${card.cost()}) <NAME>, ${modifier} ${descriptor} (${client} Inc)`;
 
-        // TODO this is weirdly buggy. Has correct value in Chrome debugger but displays old value. Consider creating the <p> elements from whole cloth in JS instead.
-        const nameElement = cardDiv.querySelector('.cardName');
-        nameElement.innerHtml = header;
+        addRow(header, 'cardName');
+        addRow(`(${card.purpose}/${card.secondaryPurpose} ${card.cardType})`, 'cardCategory');
+        addRow(`Stage ${card.stage}`);
+        addRow(`Debug: ${card.debut}`);
+        addRow(`Duration: ${card.duration}`);
+        addRow(`Contract Length: ${card.contractLength}`);
+        addRow(`Finale: ${card.finale}`);
+
+        function addRow (text, className) {
+            const newRow = document.createElement('p');
+            newRow.innerText = text;
+
+            if (className) {
+                newRow.classList.add('className');
+            }
+
+            cardDiv.appendChild(newRow);
+
+            return newRow;
+        }
     }
+
 }
 
 module.exports = Interface;
