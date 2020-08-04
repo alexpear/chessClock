@@ -17,10 +17,13 @@ class Interface {
         const cardDiv = document.getElementById('exampleCard');
         const card = Card.random();
 
+        // TODO capitalization could be touched up on 'Ai'/AI and multi-word phrases.
+
         const client = Util.capitalized(card.client.name());
-        const modifier = Util.capitalized(card.modifier);
+        const modifier = card.modifierWord();
         const descriptor = Util.capitalized(card.getDescriptor());
 
+        // TODO this should be functionized somewhere
         const header = card.cardType === 'occupation' ?
             ` ($${card.cost()}) ${card.characterName}, ${modifier} ${descriptor} (${client} Inc)` :
             ` ($${card.cost()}) <NAME>, ${modifier} ${descriptor} (${client} Inc)`;

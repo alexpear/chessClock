@@ -174,12 +174,50 @@ class Card {
         return chart[this.purpose][this.secondaryPurpose][this.cardType][this.stage - 1];
     }
 
+    modifierWord () {
+        const adjs = {
+            null: 'Nullish',
+            abomination: 'Abominable',
+            ancient: 'Ancient',
+            imp: 'Impish',
+            hellhound: 'Hellhoundish',
+            demon: 'Demonic',
+            skeleton: 'Skeletal',
+            ghost: 'Ghostly',
+            vampire: 'Vampiric',
+            chupacabra: 'Chupacabran',
+            mothman: 'Mothmanly',
+            sasquatch: 'Sasquatchic',
+            pooka: 'Pookish',
+            gorgon: 'Gorgonian',
+            sphinx: 'Sphinxic',
+            elemental: 'Elemental',
+            gargoyle: 'Gargoylish',
+            dragon: 'Draconic',
+            dodo: 'Dodoish',
+            mammoth: 'Mammoth',
+            triceratops: 'Dinosaurian',
+            robot: 'Robotic',
+            drone: 'Dronish',
+            ai: 'Artificial',
+            martian: 'Martian',
+            carnivore: 'Carnivorous',
+            grey: 'Grey'
+        };
+
+        const word = this.cardType === 'occupation' ?
+            this.modifier :
+            adjs[this.modifier] || 'Buggy';
+
+        return Util.capitalized(word);
+    }
+
     toString () { 
         const border = '-------------------------------';
 
         // TODO functionize header for html use
         const client = Util.capitalized(this.client.name());
-        const modifier = Util.capitalized(this.modifier);
+        const modifier = this.modifierWord();
         const descriptor = Util.capitalized(this.getDescriptor());
 
         const header = this.cardType === 'occupation' ?

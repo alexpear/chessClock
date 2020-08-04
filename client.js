@@ -40,7 +40,7 @@ class Client {
                 },
                 horror: {
                     name: 'lore'
-                    // Sphynxes, Griffins
+                    // Sphinxes, Griffins
                 },
                 scifi: {
                     name: 'forge'
@@ -87,7 +87,7 @@ class Client {
             sin: ['imp', 'hellhound', 'demon'],
             tomb: ['skeleton', 'ghost', 'vampire'],
             lore: ['chupacabra', 'mothman', 'sasquatch'],
-            myth: ['pooka', 'gorgon', 'sphynx'],
+            myth: ['pooka', 'gorgon', 'sphinx'],
             forge: ['elemental', 'gargoyle', 'dragon'],
             end: ['dodo', 'mammoth', 'triceratops'],
             code: ['robot', 'drone', 'ai'],
